@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品</title>
+    <link rel="stylesheet" href="css/Style.css">
+    <style>
+        .main div{
+            margin: 0 auto;
+        }
+        .main_d1{
+            width: 985px;
+            padding-bottom: 50px;
+        }
+        .main p{
+            color: gray;
+            font-size: 15px;
+            line-height: 25px;
+        }
+        .main_d2{
+            width: 985px;
+            padding-bottom: 50px;
+            overflow: hidden;
+        }
+        .con{
+            width: 450px;
+            height: 270px;
+            float: left;
+            margin-right: 120px;
+            border: 1px solid gainsboro;
+            border-radius: 15px;
+        }
+        .con p{
+            margin-left: 20px;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+        .count{
+            float: right;
+            padding-top: 30px;
+            padding-right: 20px;
+        }
+        #reduce,#add{
+            height: 23px;
+            width: 25px;
+            border: 1px solid gray;
+            background-color: #f0f0f0;
+            text-align: center;
+            line-height: 23px;
+            position: relative;
+            top: 2px;
+            display: inline-block;
+        }
+        #reduce:hover,#add:hover{
+            color: #f50;
+            border-color: #f60;
+            cursor: pointer;
+        }
+        #count-input{
+            width: 100px;
+            height: 15px;
+            line-height: 15px;
+            padding: 4px 0;
+            border: 1px solid #aaa;
+            text-align: center;
+        }
+        #Buy{
+            width: 100%;
+            height: 36px;
+            font-size: 24px;
+            color: white;
+            background-color: orange;
+            border-radius: 5px;
+            border: none;
+        }
+        Button:hover{
+            cursor: pointer;
+        }
+        .main_d3{
+            width: 730px;
+        }
+        #btnBuy_page{
+            width: 600px;
+            height: 850px;
+            position: fixed;
+            left: 35%;
+            top: 50px;
+            background-color: rgb(245, 245, 245);
+            border: 1px solid gray;
+            display: none;
+        }
+        #btnBuy_page p{
+            padding-left: 25px;
+            padding-top: 25px;
+            font-size: 16px;
+        }
+        .p1{
+            text-align: right;
+            padding-right: 50px;
+            font-size: 18px !important;
+            color: black !important;
+            font-weight: bold;
+        }
+        #btnBuy_page input{
+            width: 200px;
+            height: 25px;
+            margin-left: 25px;
+        }
+        #btnBuy_page button{
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid;
+            color: white;
+            font-size: 18px;
+            margin-top: 15px;
+        }
+        #dis_btn{
+            margin-left: 300px;
+            background-color: red;
+        }
+        #sure_btn{
+            margin-left: 50px;
+            background-color: green;
+        }
+        .footer{
+            width: 100%;
+            height: 40px;
+            background-color: black;
+            color: darkgray;
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div id="top_d1">
+            <a href="index.html"><img src="img/logo.png" alt=""></a>
+            <ul>
+                <li><a href="index.html">首页</a>
+                <li><a href="sell.html">产品贩售</a></li>
+                <li><a href="news.html">公司动态</a></li>
+                <li><a href="about.html">关于我们</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+            <h3>一刻钟 • 带你的味蕾环游世界</h3>
+        </div>
+    </div>
+    <div class="main">
+        <div class="main_d1">
+            <p style="margin-top: 50px;">零食侠  带你的味蕾环游世界</p>
+        </div>
+        <div class="main_d2">
+            <div class="con">
+                <p>环球大礼包</p>
+                <p style="width: 100px;display: inline-block;">¥<span id="price" style="color: orange;">119.9</span></p>
+                <div class="count"><span id="reduce">-</span>
+                    <input id="count-input" type="text" value="1" />
+                    <span id="add">+</span>
+                </div><br><br><br><br><br>
+                <button id="Buy">立即购买</button>
+            </div>
+            <img src="img/goods_19.jpg" alt="" style="margin-left: 100px;">
+        </div>
+        <div id="btnBuy_page">
+            <p style="font-size: 24px;">确认订单</p>
+            <p style="color: black;padding-bottom: 10px;">订单列表</p>
+            <hr width="560px" size="1px" style="color: gray;margin-left: 20px;margin-bottom: 15px;">
+            <table border="1" style="margin: 0 auto;text-align: center">
+                <thead>
+                <tr>
+                    <td style="width: 340px;">名称</td>
+                    <td style="width: 100px;">数量</td>
+                    <td style="width: 100px;">单价</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>休息一小包下午茶礼包</td>
+                    <td id="table_count"></td>
+                    <td id="table_price"></td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="p1">包邮</p>
+            <p class="p1">¥<span id="p_price" style="color: orange;font-size: 25px;"></span></p>
+            <p style="color: black;padding-top: 0px;padding-bottom: 10px;">收货地址<span style="font-size: 12px;">(<span style="color: red;">*</span>为必填项)</span></p>
+            <hr width="560px" size="1px" style="color: gray;margin-left: 20px;margin-bottom: 15px;">
+            <span style="margin-left: 30px;">姓名:<span style="color: red;">*</span></span><input type="text" id="name" placeholder="请输入姓名" /><br><br>
+            <span style="margin-left: 30px;">邮箱:<span style="color: red;">*</span></span><input type="text" id="mail" placeholder="请输入邮箱" /><br><br>
+            <span style="margin-left: 30px;">手机号:<span style="color: red;">*</span></span><input type="text" id="phoneNumber" placeholder="请输入手机号" style="margin-left: 9px;"/><br><br>
+            <span style="margin-left: 30px;">地址:<span style="color: red;">*</span></span>
+            <form method="post" action="" name="myForm" style="width: 300px;height: 50px;position: relative;left: 100px;top: -20px;overflow: hidden;">
+                <div style="float: left;">
+                    <select name="country" onChange="changeProvince()">
+                        <option value="0">—请选择省/城市—</option>
+                        <option value="北京市">北京市</option>
+                        <option value="上海市">上海市</option>
+                        <option value="广州省">广州省</option>
+                        <option value="深圳市">深圳市</option>
+                    </select>
+                </div>
+                <div style="float: left;">
+                    <select name="province">
+                        <option>—请选择所在省份和地区—</option>
+                    </select>
+                </div>
+            </form>
+            <span style="margin-left: 30px;"><input type="text" id="addr" placeholder="请输入详细地址" style="margin-left: 0px;width: 268px;"/></span><br><br>
+            <span style="margin-left: 30px;">邮编:<span style="color: red;opacity: 0;">*</span></span><input type="text" id="postcode" placeholder="请输入邮编" /><br><br>
+            <span style="margin-left: 30px;">备注:<span style="color: red;opacity: 0;">*</span></span><textarea style="width: 200px;height: 100px;margin-left: 25px;" placeholder="请输入给商家的留言"></textarea><br><br>
+            <button id="dis_btn">取消订单</button>
+            <button id="sure_btn">确定订单</button>
+        </div>
+        <div class="main_d3">
+            <h2>商品详情</h2>
+            <p>Goods details</p>
+            <img src="img/goods_20.jpg" alt="">
+            <img src="img/goods_21.jpg" alt="">
+            <img src="img/goods_22.jpg" alt="">
+            <img src="img/goods_23.jpg" alt="">
+            <img src="img/goods_24.jpg" alt="">
+            <img src="img/goods_25.jpg" alt="">
+            <img src="img/goods_26.jpg" alt="">
+            <img src="img/goods_27.jpg" alt="">
+            <img src="img/goods_28.png" alt="" style="padding-left: 50px;">
+        </div>
+    </div>
+    <div class="footer">
+        <p>Copyright © 2015-2016 成都零食侠科技有限公司。蜀ICP备 15027883号-1</p>
+    </div>
+    <script>
+        var buy = document.getElementById("Buy");
+        var buy_page = document.getElementById("btnBuy_page");
+        var redu = document.getElementById("reduce");
+        var add = document.getElementById("add");
+        var count = document.getElementById("count-input");
+        var price = document.getElementById("price");
+        var table_count = document.getElementById("table_count");
+        var table_price = document.getElementById("table_price");
+        var p_price = document.getElementById("p_price");
+        var sel = document.getElementsByTagName("select");
+        var dis_btn = document.getElementById("dis_btn");
+        var sure_btn = document.getElementById("sure_btn");
+        var num = parseInt(count.value);
+        table_count.innerHTML = num;
+        table_price.innerHTML = "¥" + price.innerHTML;
+        p_price.innerHTML = (num * parseFloat(price.innerHTML)).toFixed(2);
+        redu.onclick = function () {
+            num -= 1;
+            if(num < 0)
+            {
+                num = 0;
+            }
+            count.value = num;
+            table_count.innerHTML = num;
+            p_price.innerHTML = (num * parseFloat(price.innerHTML)).toFixed(2);
+        };
+        add.onclick = function () {
+            num += 1;
+            count.value = num;
+            table_count.innerHTML = num;
+            p_price.innerHTML = (num * parseFloat(price.innerHTML)).toFixed(2);
+        };
+        function addAddress(arr) {
+            var s = "<option>—请选择所在省份和地区—</option>";
+            for(var i = 0;i < arr.length;i++)
+            {
+                s += "<option>" + arr[i] + "</option>";
+            }
+            sel[1].innerHTML = s;
+        }
+        function changeProvince() {
+            var key = sel[0].selectedIndex;
+            var bj_arr = ["东城区","西城区","朝阳区","丰台区","石景山区","海淀区","顺义区","通州区","大兴区","房山区","门头沟区","昌平区","平谷区","密云区","怀柔区","延庆区"];
+            var sh_arr = ["黄浦区","徐汇区","长宁区","静安区","普陀区","虹口区","杨浦区","浦东新区","闵行区","宝山区","嘉定区","金山区","松江区","青浦区","奉贤区","崇明区"];
+            var gz_arr = ["越秀区","海珠区","荔湾区","天河区","白云区","黄埔区","南沙区","番禺区","花都区","增城区","从化区"];
+            var sz_arr = ["罗湖区","福田区","南山区","宝安区","龙岗区","盐田区","龙华区","坪山区","光明区"];
+            switch(key)
+            {
+                case 0:
+                    sel[1].innerHTML = "<option>—请选择所在省份和地区—</option>";break;
+                case 1:
+                    addAddress(bj_arr);break;
+                case 2:
+                    addAddress(sh_arr);break;
+                case 3:
+                    addAddress(gz_arr);break;
+                case 4:
+                    addAddress(sz_arr);break;
+                default:
+                    break;
+            }
+        }
+        buy.onclick = function () {
+            if(num >= 1)
+            {
+                buy_page.style.display = "block";
+            }
+            else{
+                alert("购买数不能为0！");
+            }
+        };
+        dis_btn.onclick = function () {
+            buy_page.style.display = "none";
+        };
+        sure_btn.onclick = function () {
+            var name = document.getElementById("name");
+            var mail = document.getElementById("mail");
+            var phoneNumber = document.getElementById("phoneNumber");
+            var addr = document.getElementById("addr");
+            var emreg = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+            var flag = true;
+            if(name.value == "")
+            {
+                flag = false;
+                alert("输入的名字不能为空！");
+            }else if(mail.value == "")
+            {
+                flag = false;
+                alert("输入的邮箱不能为空！");
+            }else if(emreg.test(mail.value) == false)
+            {
+                flag = false;
+                alert("输入的邮箱格式有误！");
+            }else if(phoneNumber.value == "")
+            {
+                flag = false;
+                alert("输入的电话不能为空！");
+            }else if(phoneNumber.value.length != 11)
+            {
+                flag = false;
+                alert("输入的电话不正确！");
+            }else if(addr.value == "")
+            {
+                flag = false;
+                alert("输入的详细地址不能为空！");
+            }
+            if(flag)
+            {
+                alert("确定订单完成！");
+                buy_page.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>联系我们</title>
+    <link rel="stylesheet" href="css/Style.css">
+    <style>
+        .introduce{
+            width: 100%;
+            height: 250px;
+            position: relative;
+            background: url("img/bg2.jpg");
+            background-size: 100%;
+            margin-bottom: 50px;
+        }
+        .introduce_d{
+            width: 100%;
+            height: 200px;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            padding-top: 50px;
+        }
+        .introduce_d h1{
+            font-size: 45px;
+            margin-bottom: 5px;
+        }
+        .introduce_d h2{
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        .introduce_d p{
+            line-height: 30px;
+        }
+        .main div{
+            margin: 0 auto;
+        }
+        .footer{
+            width: 100%;
+            height: 40px;
+            background-color: black;
+            color: darkgray;
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div id="top_d1">
+            <a href="index.html"><img src="img/logo.png" alt=""></a>
+            <ul>
+                <li><a href="index.html">首页</a>
+                <li><a href="sell.html">产品贩售</a></li>
+                <li><a href="news.html">公司动态</a></li>
+                <li><a href="about.html">关于我们</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+            <h3>一刻钟 • 带你的味蕾环游世界</h3>
+        </div>
+    </div>
+    <div class="introduce">
+        <div class="introduce_d">
+            <div style="width: 400px;margin: 0 auto;">
+                <h1>Contact us</h1>
+                <h2>联系我们</h2>
+                <div style="width: 30px;height:4px;background-color: rgb(143, 204, 148);margin-bottom: 5px;"></div>
+                <p>一刻钟</p>
+                <p>带你的味蕾环游世界</p>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div style="width:500px;height:400px;margin:0 auto;border:#ccc solid 1px;font-size:12px" id="map"></div>
+        <div style="width: 500px;margin-top: 50px;margin-bottom: 50px;">
+            <p>电话：400-1619917/028-69861996</p>
+            <p>web:www.snackman.cn</p>
+            <p>E-mail:hr@snackman.cn</p>
+            <p>微信：snackman-cd</p>
+            <p>地址：四川省成都市天府五街菁蓉国际广场6栋A区</p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Copyright © 2015-2016 成都零食侠科技有限公司。蜀ICP备 15027883号-1</p>
+    </div>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=4gyPSLgBmKdFxTMMPmhqiQzfFeg3tXkW"></script>
+    <script type="text/javascript">
+        //创建和初始化地图函数：
+        function initMap(){
+            createMap();//创建地图
+            setMapEvent();//设置地图事件
+            addMapControl();//向地图添加控件
+            addMapOverlay();//向地图添加覆盖物
+        }
+        function createMap(){
+            map = new BMap.Map("map");
+            map.centerAndZoom(new BMap.Point(104.067844,30.544961),18);
+        }
+        function setMapEvent(){
+            map.enableScrollWheelZoom();
+            map.enableKeyboard();
+            map.enableDragging();
+            map.enableDoubleClickZoom()
+        }
+        function addClickHandler(target,window){
+            target.addEventListener("click",function(){
+                target.openInfoWindow(window);
+            });
+        }
+        function addMapOverlay(){
+            var markers = [
+                {content:"我的备注",title:"四川省成都市天府五街菁蓉国际广场6栋A区",imageOffset: {width:0,height:3},position:{lat:30.544961,lng:104.067844}},
+            ];
+            for(var index = 0; index < markers.length; index++ ){
+                var point = new BMap.Point(markers[index].position.lng,markers[index].position.lat);
+                var marker = new BMap.Marker(point,{icon:new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png",new BMap.Size(20,25),{
+                    imageOffset: new BMap.Size(markers[index].imageOffset.width,markers[index].imageOffset.height)
+                })});
+                var label = new BMap.Label(markers[index].title,{offset: new BMap.Size(25,5)});
+                var opts = {
+                    width: 200,
+                    title: markers[index].title,
+                    enableMessage: false
+                };
+                var infoWindow = new BMap.InfoWindow(markers[index].content,opts);
+                marker.setLabel(label);
+                addClickHandler(marker,infoWindow);
+                map.addOverlay(marker);
+            };
+        }
+        //向地图添加控件
+        function addMapControl(){
+            var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+            scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+            map.addControl(scaleControl);
+            var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+            map.addControl(navControl);
+            var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+            map.addControl(overviewControl);
+        }
+        var map;
+        initMap();
+    </script>
+</body>
+</html>
